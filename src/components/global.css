@@ -1,0 +1,141 @@
+
+/* blue_light: '##4ebcff',
+    blue_mid: '#2972b6',
+    blue_dark: '#002790',
+    purple: '#945cb4',
+    purple_dark: '#001d4f' */
+:root {
+    --blue-very-light: #e6f7ff;
+    --blue-light: #4ebcff;
+    --blue-mid: #2972b6;
+    --blue-dark: #002790;
+    --purple: #945cb4;
+    --purple-dark: #001d4f;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--blue-very-light);
+}
+
+body h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+body h5 {
+    color: var(--blue-dark);
+}
+
+body h3 {
+    color: var(--blue-dark);
+}
+
+
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.canvas {
+    border: 1px solid black;
+    margin: 10px;
+    width: 600px;
+    /* padding: 10px; */
+}
+
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.buttons button {
+    border: none;
+    padding: 8px 8px;
+    font-size: 16px;
+    margin: 4px 4px;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.2s ease-in-out;
+}
+
+.buttons button:hover {
+    background-color: var(--blue-light);
+    padding: 10px 10px;
+}
+
+.feedback-button {
+    color: white;
+    background-color: var(--purple);
+    box-shadow: 3px 3px 0px 0.1px var(--purple-dark);
+}
+
+.see-code {
+    color: white;
+    background-color: var(--blue-mid);
+    box-shadow: 3px 3px 0px 0.1px var(--blue-dark);
+}
+
+.graphic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.arrow {
+    color: var(--blue-dark);
+}
+
+.get-started {
+    height: 140px;
+    width: 140px;
+    padding: 3px;
+    background-color: var(--blue-mid);
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 4px 5px 0px 0.1px var(--blue-dark);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.get-started:hover {
+    background-color: var(--blue-dark);
+    box-shadow: 2px 3px 0px 0.1px var(--blue-dark);
+    height: 160px;
+    width: 160px;
+}
+
+
+.info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 10px 80px;
+}
