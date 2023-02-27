@@ -3,12 +3,14 @@ import { ArrowRight } from 'react-bootstrap-icons';
 import { AiOutlineUpload, AiOutlineLineChart } from 'react-icons/ai'
 import { GiDrumKit } from 'react-icons/gi'
 import colourScheme from './colourScheme';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
     <div className='landing'>
+        <br/><br/>
         <h1>Analyse your timing and compare it to a recording!</h1>
-
+        <br/><br/>
         <p align="center">
           <b>
             All you need is your laptop, some 
@@ -24,7 +26,9 @@ const LandingPage = () => {
         </p>
         <p fontSize={45}>💻  🎧  🥁</p>
         <br/><br/>
-        <button className="rounded-circle get-started">Get Started</button>
+        <Link to="analysis">
+          <button className="rounded-circle get-started">Get Started</button>
+        </Link>
         <br/><br/>
 
         <div className="graphic">

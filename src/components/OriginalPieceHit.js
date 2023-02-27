@@ -22,7 +22,7 @@ const OriginalPieceHit = (
       <rect 
       x={x} y={y}
       width="3" height="15" 
-      fill="black" fill-opacity="0.6" />
+      fill="black" fillOpacity="0.6" />
     </svg>
   )
 }
