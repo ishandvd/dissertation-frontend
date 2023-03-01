@@ -5,7 +5,7 @@ let gumStream = null;
 let recorder = null;
 let audioContext = null;
 
-function RecorderJSDemo() {
+function RecorderJSDemo({ enabled }) {
 
 
     const audioContext =  new (window.AudioContext || window.webkitAudioContext)();
@@ -62,8 +62,8 @@ function RecorderJSDemo() {
 
     return (
         <div>
-            <button onClick={startRecording} type="button">Start</button>
-            <button onClick={stopRecording} type="button">Stop</button>
+            <button onClick={startRecording} type="button" disabled={!enabled}>Start</button>
+            <button onClick={stopRecording} type="button" disabled={!enabled}>Stop</button>
         </div>
     );
 }
