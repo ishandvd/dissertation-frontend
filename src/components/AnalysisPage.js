@@ -8,8 +8,7 @@ import { useEffect, useState } from "react";
 
 const AnalysisPage = () => {
 
-    const [loading, setLoading] = useState(true);
-
+    const [drumHits, setDrumHits] = useState({});
 
     const sendBackingTrack = (event) => {
         const file = event.target.files[0];
@@ -22,20 +21,25 @@ const AnalysisPage = () => {
         // Send post request and receive response, then log it
         axios.post('http://localhost:5000/backing-track', data, config).then((response) => {
             console.log(response);
-        })
+            setDrumHits(response.data.timings);
+        }).catch((error) => {
+            console.log(" ERROR: Analysis Page: ", error);
+        });
     }
+
+    useEffect(() => {}, [drumHits]);
 
   return (
     <div className="analysis">
         <h5><b>Analysis Page</b></h5>
         <button>Upload File</button>
         <input type="file" onChange={sendBackingTrack} />
-        {loading ? <p>Loading...</p> : (
+        {drumHits === {} ? <p>Loading...</p> : (
             <>
-                <RecorderJSDemo enabled={false} />
+                <RecorderJSDemo enabled={drumHits !== {}} />
                 <SheetDisplay 
-                drumHits={sampleDrumHits}
-                enabled={false}
+                drumHits={drumHits}
+                enabled={drumHits !== {}}
                 method="original"
                 />
             </>
