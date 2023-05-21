@@ -1,15 +1,18 @@
 import axios from "axios";
 import Recorder from 'recorder-js';
+import React, { useState } from 'react';
 
 let gumStream = null;
 let recorder = null;
 let audioContext = null;
 
-function RecorderJSDemo() {
+function DrumRecorder({socket, setRecording, setComparisonData}) {
 
 
     const audioContext =  new (window.AudioContext || window.webkitAudioContext)();
     console.log("sample rate: " + audioContext.sampleRate);
+    // use state to store backing blob
+    const [backingBlob, setBackingBlob] = useState(null);
 
     const recorder = new Recorder(audioContext, {
     })
@@ -46,26 +49,31 @@ function RecorderJSDemo() {
             })
     }
 
+    const sendToServer = () => {
+        socket.emit("backing-track", "");
+    }
+
     const onStop = (blob) => {
         console.log("uploading...");
 
         let data = new FormData();
 
         data.append('text', "this is the transcription of the audio file");
-        data.append('wavfile', blob, "recording.wav");
+        data.append('backing-track', blob, "recording.wav");
 
         const config = {
             headers: {'content-type': 'multipart/form-data'}
         }
-        axios.post('http://localhost:5000/audio-upload', data, config);
+        axios.post('http://localhost:5000/get-comparison', data, config);
     }
 
     return (
         <div>
             <button onClick={startRecording} type="button">Start</button>
             <button onClick={stopRecording} type="button">Stop</button>
+            <button onClick={sendToServer} type="button">Send to server</button>
         </div>
     );
 }
 
-export default RecorderJSDemo;
+export default DrumRecorder;

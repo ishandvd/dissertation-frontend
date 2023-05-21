@@ -5,15 +5,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/global.css';
 import Staffs from './components/Staffs';
 import LandingPage from './components/LandingPage';
+import VisualisationPage from './components/VisualisationPage';
 import { AiFillGithub } from 'react-icons/ai';
+import { useState } from 'react';
 
 // import sampleDrumHits from './sampleDrumHits';
-import sampleDrumHits from './components/sampleDrumHits';
-import SheetDisplay from './components/SheetDisplay';
-import RecorderJSDemo from './components/RecorderJSDemo';
 
 
 function App() {
+
+  const [landing, setLanding] = useState(true)
 
   return (
     <div>
@@ -27,9 +28,22 @@ function App() {
           onClick={() => window.open('https://github.com/ishandvd/diss')} 
           className='see-code'>
             <b>See the Code</b> <AiFillGithub/>
-          </button>
+        </button>
+        {landing ? <></> : 
+        <button 
+          onClick={() => setLanding(true)} 
+          className='see-code'>
+            <b>Back to Home</b> <AiFillGithub/>
+        </button>
+        }
       </div>
-    <LandingPage />
+      {landing ? 
+        <LandingPage setLanding={setLanding}/>
+        :
+        <div>
+          <VisualisationPage />
+        </div>
+      }
     </div>
   );
 }

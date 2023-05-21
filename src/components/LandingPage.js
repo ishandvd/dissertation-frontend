@@ -4,7 +4,7 @@ import { AiOutlineUpload, AiOutlineLineChart } from 'react-icons/ai'
 import { GiDrumKit } from 'react-icons/gi'
 import colourScheme from './colourScheme';
 
-const LandingPage = () => {
+const LandingPage = ({setLanding}) => {
   return (
     <div className='landing'>
         <h1>Analyse your timing and compare it to a recording!</h1>
@@ -24,7 +24,7 @@ const LandingPage = () => {
         </p>
         <p fontSize={45}>💻  🎧  🥁</p>
         <br/><br/>
-        <button className="rounded-circle get-started">Get Started</button>
+        <button className="rounded-circle get-started" onClick={() => setLanding(false)}>Get Started</button>
         <br/><br/>
 
         <div className="graphic">
